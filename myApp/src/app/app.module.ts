@@ -9,6 +9,18 @@ import { LoginPage } from '../pages/login/login';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+// Import the AF2 Module
+import { AngularFireModule } from 'angularfire2';
+
+// AF2 Settings
+export const firebaseConfig = {
+   apiKey: "AIzaSyDPpBVfyDkEskpromg8Sy1zpoc02ZyjJCE",
+   authDomain: "candler-a7b00.firebaseapp.com",
+   databaseURL: "https://candler-a7b00.firebaseio.com",
+   storageBucket: "candler-a7b00.appspot.com",
+   messagingSenderId: "532455404591"
+};
+
 @NgModule({
   declarations: [
     MyApp,
@@ -18,7 +30,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     TabsPage
   ],
   imports: [
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    AngularFireModule.initializeApp(firebaseConfig)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
