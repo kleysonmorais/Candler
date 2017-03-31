@@ -8,8 +8,8 @@ import { ProgressoPage } from '../progresso/progresso';
 })
 export class TabsPage {
   //Define controller das tabs
-  tab1Root: any = HomePage;
-  tab2Root: any = ProgressoPage;
+  tab1Root: any = ProgressoPage;
+  tab2Root: any = HomePage;
   constructor() {
 
   }
