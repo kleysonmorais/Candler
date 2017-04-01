@@ -1,0 +1,22 @@
+.bg-menu{
+  background-color: #FFEB3B;
+
+}
+.navbar-menu{
+  color: #524a04;
+  display: inline-block;
+    padding-top: .25rem;
+    padding-bottom: .25rem;
+    margin-right: 1rem;
+    font-size: 1.25rem;
+    line-height: inherit;
+    white-space: nowrap;
+    text-decoration: none;
+}
+
+.nav-color{
+  display: block;
+  padding: .5em 1em;
+  color: #524a04;
+  text-decoration: none;
+}

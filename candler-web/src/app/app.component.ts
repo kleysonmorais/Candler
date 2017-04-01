@@ -9,7 +9,7 @@ import {AngularFire, FirebaseListObservable} from 'angularfire2';
 export class AppComponent {
   teste: FirebaseListObservable<any>;
   constructor(af: AngularFire){
-    this.teste = af.database.list("/teste");
+    //this.teste = af.database.list("/teste");
     //console.log(queryObservable);
   }
 }

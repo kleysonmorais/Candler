@@ -7,6 +7,10 @@ import { AppComponent } from './app.component';
 import { NovoCadastroComponent } from './novo-cadastro/novo-cadastro.component';
 import { MenuComponent } from './menu/menu.component';
 import { AngularFireModule } from 'angularfire2';
+import { ProdutosComponent } from './produtos/produtos.component';
+import { HomeComponent } from './home/home.component';
+import { routing } from './app.routing';
+
 // Must export the config
 export const firebaseConfig = {
     apiKey: "AIzaSyDPpBVfyDkEskpromg8Sy1zpoc02ZyjJCE",
@@ -21,14 +25,17 @@ export const firebaseConfig = {
   declarations: [
     AppComponent,
     NovoCadastroComponent,
-    MenuComponent
+    MenuComponent,
+    ProdutosComponent,
+    HomeComponent
   ],
   imports: [
     AlertModule.forRoot(),
     BrowserModule,
     FormsModule,
     HttpModule,
-    AngularFireModule.initializeApp(firebaseConfig)
+    AngularFireModule.initializeApp(firebaseConfig),
+    routing
   ],
   providers: [],
   bootstrap: [AppComponent]
