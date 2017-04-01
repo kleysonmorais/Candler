@@ -1,0 +1,106 @@
+{
+  "empresa": {
+    "id_empresa": {
+      "info_empresa": {
+        "nome": "Empresa A",
+        "CNPJ": "XXX XXX XXX-XX",
+        "Proprietario": "Roberto Franklin",
+        "Endereco": {
+          "latitude": "xxx",
+          "longitude": "xxx"
+        },
+        "Contatos": {
+          "telefone_fixo": "xxxxxx",
+          "telefone_celular": "xxxxxx"
+        }
+      },
+      "candler_mae": {
+        "lote_ativo": {
+          "id_lote": {
+            "info_lote": {
+              "nome": "Nome do Cupom",
+              "data_inicio": "xx/xx/xxxx",
+              "data_encerramento": "xx/xx/xxxx",
+              "descricao": "Contém as informações sobre o Lote",
+              "requisitos": "Requisitos Necessários para usar o Cupom",
+              "preco": "R$ 00.00 (Preço do Lote)",
+              "qtd_inicial": "xxx",
+              "qtd_atual": "xxx",
+              "status": "Disponível/Em uso/Indisponível (Status do Lote)"
+            },
+            "cupom": {
+              "id_cupom": {
+                "status": "Disponível/Usado/Indisponível"
+              }
+            }
+          }
+        },
+        "lote_inativo": {
+          "id_lote": {
+            "info_lote": {
+              "nome": "Nome do Cupom",
+              "data_inicio": "xx/xx/xxxx",
+              "data_encerramento": "xx/xx/xxxx",
+              "descricao": "Contém as informações sobre o Lote",
+              "requisitos": "Requisitos Necessários para usar o Cupom",
+              "preco": "R$ 00.00 (Preço do Lote)",
+              "qtd_inicial": "xxx",
+              "qtd_atual": "xxx",
+              "status": "Disponível/Em uso/Indisponível (Status do Lote)"
+            },
+            "cupom": {
+              "id_cupom": {
+                "status": "Disponível/Usado/Indisponível",
+                "id_cliente": "Id do Cliente que Utilizou o Cupom"
+              }
+            }
+          }
+        }
+      },
+      "candler_filho": {
+        "lote_ativo": {
+          "id_lote_filho": {
+            "codigos_empresa_mae": {
+              "xxx xxx xxx": "status"
+            },
+            "candler_passivo": {
+              "id_candler_passivo": {
+                "pontuacao": "inteiro",
+                "status": "status",
+                "id_empresa_secundaria": "xxx",
+                "id_empresa_primaria": "xxx",
+                "id_lote": "xxx xxx",
+                "id_cliente": "id cliente que utilizar"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "cliente": {
+    "id_cliente": {
+      "info_cliente": {
+        "nome": "Kleyson Morais"
+      },
+      "candler_ativo": {
+        "id_candler": "xxx xxx xxx",
+        "empresa_primaria": "nome",
+        "empresa_secundaria": "nome",
+        "prazo": "data",
+        "qtd_pontos": "inteiro",
+        "qtd_atual": "inteiro",
+        "status": "string",
+        "rede": {
+          "id_criador_rede": "xxx xxx xxx",
+          "id_candler": "xxx xxx xxx"
+        },
+        "codigo_passivo_utilizado": {
+          "id_passivo": {
+            "data": "xx/xx/xxxx"
+          }
+        }
+      }
+    }
+  }
+}
