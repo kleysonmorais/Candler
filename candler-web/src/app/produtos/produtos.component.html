@@ -1,4 +1,17 @@
+<div class="espacamento-menu">
+  <div class="container">
+    <div class="row">
 
-<p>
-  produtos works!
-</p>
+      <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
+        <div class="col" *ngFor="let produto of produtos">
+          <div class="card" style="width: 20rem;">
+            <div class="card-block">
+              <h4 class="card-title">{{ produto.nome }}</h4>
+              <p class="card-text">{{ produto.descricao }}</p>
+              <a [routerLink]="['/produto', produto.id]" class="btn btn-primary">Comprar</a>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
