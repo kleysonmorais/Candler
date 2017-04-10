@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FirebaseListObservable} from 'angularfire2';
 
 import { ProdutosService } from './produtos.service';
 
@@ -10,10 +11,18 @@ import { ProdutosService } from './produtos.service';
 export class ProdutosComponent implements OnInit {
 
   produtos:any[];
-  constructor(private produtosService: ProdutosService) { }
+  cupons: FirebaseListObservable<any>;
+  constructor(private produtosService: ProdutosService) {}
 
   ngOnInit() {
     this.produtos = this.produtosService.getProdutos();
+    this.cupons = this.produtosService.getCupom();
+  }
+
+  adicionarCupom(nome, produto, desconto){
+    this.produtosService.adicionarCupom(nome, produto, desconto);
+    //console.log("Nome: " + nome);
+    nome = "";
   }
 
 }

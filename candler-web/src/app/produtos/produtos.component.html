@@ -1,17 +1,55 @@
 <div class="espacamento-menu">
   <div class="container">
     <div class="row">
-
       <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
-        <div class="col" *ngFor="let produto of produtos">
-          <div class="card" style="width: 20rem;">
-            <div class="card-block">
-              <h4 class="card-title">{{ produto.nome }}</h4>
-              <p class="card-text">{{ produto.descricao }}</p>
-              <a [routerLink]="['/produto', produto.id]" class="btn btn-primary">Comprar</a>
-            </div>
+      <div class="col" *ngFor="let produto of produtos">
+        <div class="card" style="width: 20rem;">
+          <div class="card-block">
+            <h4 class="card-title">{{ produto.nome }}</h4>
+            <p class="card-text">{{ produto.descricao }}</p>
+            <a [routerLink]="['/produto', produto.id]" class="btn btn-primary">Comprar</a>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <form style="padding-top: 5%">
+    <div class="form-group">
+      <label for="exampleInputEmail1">Empresa</label>
+      <input #nome type="text" class="form-control" id="exampleInputEmail1" placeholder="Nome">
+    </div>
+    <div class="form-group">
+      <label for="exampleInput">Produto</label>
+      <input #produto type="text" class="form-control" id="exampleInput" placeholder="Nome do Produto">
+    </div>
+    <div class="form-group">
+      <label for="exampleSelect1">Desconto</label>
+      <select #desconto class="form-control" id="exampleSelect">
+      <option>10%</option>
+      <option>20%</option>
+      <option>30%</option>
+      <option>40%</option>
+      <option>50%</option>
+    </select>
+    </div>
+    <button type="submit" class="btn btn-primary" (click)="adicionarCupom(nome.value, produto.value, desconto.value)">Enviar</button>
+  </form>
+
+  <div class="container" style="padding-top: 5%">
+    <div class="row">
+      <ul class="list-group">
+        <li *ngFor="let cupom of cupons | async" class="list-group-item">Empresa: {{cupom.nome}}</li>
+      </ul>
+      <!--<div class="col" *ngFor="let cupom of cupons | async">
+        <div class="card" style="width: 20rem;">
+          <div class="card-block">
+            <h4 class="card-title">{{ cupom.nome }}</h4>
+            <p class="card-text">{{ cupom.desconto }}</p>
+            <a [routerLink]="['/produto', produto.id]" class="btn btn-primary">Comprar</a>
+          </div>
+        </div>
+      </div>-->
     </div>
   </div>
 </div>

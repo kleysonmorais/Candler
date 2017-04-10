@@ -12,6 +12,11 @@ import { ProdutosComponent } from './produtos/produtos.component';
 import { HomeComponent } from './home/home.component';
 import { routing } from './app.routing';
 import { ComprarProdutoComponent } from './comprar-produto/comprar-produto.component';
+import { LoginComponent } from './login/login/login.component';
+import { EmailComponent } from './login/email/email.component';
+import { SignupComponent } from './login/signup/signup.component';
+import { MembersComponent } from './login/members/members.component';
+import { AuthGuard } from './services/auth.service';
 
 // Must export the config
 export const firebaseConfig = {
@@ -30,7 +35,11 @@ export const firebaseConfig = {
     MenuComponent,
     ProdutosComponent,
     HomeComponent,
-    ComprarProdutoComponent
+    ComprarProdutoComponent,
+    LoginComponent,
+    EmailComponent,
+    SignupComponent,
+    MembersComponent
   ],
   imports: [
     AlertModule.forRoot(),
@@ -40,7 +49,7 @@ export const firebaseConfig = {
     AngularFireModule.initializeApp(firebaseConfig),
     routing
   ],
-  providers: [ProdutosService],
+  providers: [ProdutosService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
