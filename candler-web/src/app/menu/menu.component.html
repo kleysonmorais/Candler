@@ -1,27 +1,27 @@
 <nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-menu">
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+    aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <b><a class="navbar-menu" routerLink="">Candler</a></b>
+  <b><a class="navbar-menu" routerLink="">Candler</a></b>
 
-      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-            <a class="nav-color" routerLink="produtos">Produtos</a>
-          </li>
-          <!-- <li class="nav-item dropdown">
-            <a class="nav-color dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-            <div class="dropdown-menu" aria-labelledby="dropdown01">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-          </li> -->
-        </ul>
-        <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="text" placeholder="E-mail">
-          <input class="form-control mr-sm-2" type="text" placeholder="Senha">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Entrar</button>
-        </form>
-      </div>
+  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-color" routerLink="produtos">Produtos</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-color" routerLink="qr">Qr-Code</a>
+      </li>
+    </ul>
+
+    <form class="form-inline my-2 my-lg-0" #formData='ngForm' (ngSubmit)="onSubmit(formData)">
+
+      <input class="form-control mr-sm-2" type="text" placeholder="E-mail" (ngModel)="email" name="email">
+      <input class="form-control mr-sm-2" type="password" placeholder="Senha" (ngModel)="password" name="password" required>
+
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit" [disabled]="!formData.valid">Entrar</button>
+      
+    </form>
+  </div>
 </nav>

@@ -8,7 +8,7 @@ import { moveIn, fallIn } from '../../animation/router.animations';
   templateUrl: './email.component.html',
   styleUrls: ['./email.component.css'],
   animations: [moveIn(), fallIn()],
-  host: {'[@moveIn]': ''}
+  host: { '[@moveIn]': '' }
 })
 export class EmailComponent implements OnInit {
 
@@ -16,11 +16,11 @@ export class EmailComponent implements OnInit {
   }
 
   state: string = '';
-    error: any;
+  error: any;
 
-    constructor(public af: AngularFire,private router: Router) {
-    this.af.auth.subscribe(auth => { 
-      if(auth) {
+  constructor(public af: AngularFire, private router: Router) {
+    this.af.auth.subscribe(auth => {
+      if (auth) {
         this.router.navigateByUrl('/members');
       }
     });
@@ -28,24 +28,24 @@ export class EmailComponent implements OnInit {
 
 
   onSubmit(formData) {
-    if(formData.valid) {
+    if (formData.valid) {
       console.log(formData.value);
       this.af.auth.login({
         email: formData.value.email,
         password: formData.value.password
       },
-      {
-        provider: AuthProviders.Password,
-        method: AuthMethods.Password,
-      }).then(
+        {
+          provider: AuthProviders.Password,
+          method: AuthMethods.Password,
+        }).then(
         (success) => {
-        console.log(success);
-        this.router.navigate(['/members']);
-      }).catch(
+          console.log(success);
+          this.router.navigate(['/members']);
+        }).catch(
         (err) => {
-        console.log(err);
-        this.error = err;
-      })
+          console.log(err);
+          this.error = err;
+        })
     }
   }
 
