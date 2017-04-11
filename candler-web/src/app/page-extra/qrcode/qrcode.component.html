@@ -1,0 +1,8 @@
+<h1 style="padding-top:5%">
+  Angular QR Code</h1>
+
+<qr-code [value]="qr" [size]="150"></qr-code>
+
+<input (keyup)="onKey($event)" type="text" class="form-control" id="qr" placeholder="qr">
+
+<p> {{ qr }} </p>

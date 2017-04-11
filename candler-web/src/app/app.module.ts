@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { QRCodeModule } from 'angular2-qrcode';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { ProdutosService } from './produtos/produtos.service';
@@ -17,6 +18,9 @@ import { EmailComponent } from './login/email/email.component';
 import { SignupComponent } from './login/signup/signup.component';
 import { MembersComponent } from './login/members/members.component';
 import { AuthGuard } from './services/auth.service';
+import { QrcodeComponent } from './page-extra/qrcode/qrcode.component';
+
+
 
 // Must export the config
 export const firebaseConfig = {
@@ -39,7 +43,8 @@ export const firebaseConfig = {
     LoginComponent,
     EmailComponent,
     SignupComponent,
-    MembersComponent
+    MembersComponent,
+    QrcodeComponent
   ],
   imports: [
     AlertModule.forRoot(),
@@ -47,7 +52,8 @@ export const firebaseConfig = {
     FormsModule,
     HttpModule,
     AngularFireModule.initializeApp(firebaseConfig),
-    routing
+    routing,
+    QRCodeModule
   ],
   providers: [ProdutosService, AuthGuard],
   bootstrap: [AppComponent]
