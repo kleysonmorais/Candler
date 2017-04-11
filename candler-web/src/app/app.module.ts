@@ -5,10 +5,11 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { ProdutosService } from './produtos/produtos.service';
 import { AlertModule } from 'ng2-bootstrap/ng2-bootstrap';
+import { AngularFireModule } from 'angularfire2';
+
 import { AppComponent } from './app.component';
 import { NovoCadastroComponent } from './novo-cadastro/novo-cadastro.component';
 import { MenuComponent } from './menu/menu.component';
-import { AngularFireModule } from 'angularfire2';
 import { ProdutosComponent } from './produtos/produtos.component';
 import { HomeComponent } from './home/home.component';
 import { routing } from './app.routing';
@@ -19,7 +20,7 @@ import { SignupComponent } from './login/signup/signup.component';
 import { MembersComponent } from './login/members/members.component';
 import { AuthGuard } from './services/auth.service';
 import { QrcodeComponent } from './page-extra/qrcode/qrcode.component';
-
+import { CrudEmpresaService } from './services/crud-empresa.service';
 
 
 // Must export the config
@@ -55,7 +56,7 @@ export const firebaseConfig = {
     routing,
     QRCodeModule
   ],
-  providers: [ProdutosService, AuthGuard],
+  providers: [ProdutosService, AuthGuard, CrudEmpresaService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

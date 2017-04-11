@@ -1,43 +1,25 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFire, AuthProviders, AuthMethods } from 'angularfire2';
-import { Router } from '@angular/router';
 import { moveIn, fallIn } from '../../animation/router.animations';
+
+import { CrudEmpresaService } from './../../services/crud-empresa.service';
 
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.css'],
   animations: [moveIn(), fallIn()],
-  host: {'[@moveIn]': ''}
+  host: { '[@moveIn]': '' }
 })
 export class SignupComponent implements OnInit {
 
   ngOnInit() {
   }
 
-  state: string = '';
-  error: any;
-
-  constructor(public af: AngularFire,private router: Router) {
-
-  }
+  constructor(public crud: CrudEmpresaService) {}
 
   onSubmit(formData) {
-    if(formData.valid) {
-      console.log(formData.value);
-      this.af.auth.createUser({
-        email: formData.value.email,
-        password: formData.value.password
-      }).then(
-        (success) => {
-        console.log(success);
-        this.router.navigate(['/login'])
-      }).catch(
-        (err) => {
-        console.log(err);
-        this.error = err;
-      })
-    }
+    //Armazena informações da empresa no banco    
+    this.crud.onSubmitCadastrar(formData);
   }
 
 }

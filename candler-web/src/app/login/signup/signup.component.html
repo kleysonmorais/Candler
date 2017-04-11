@@ -1,16 +1,31 @@
-<div class="form-container">
-  <a routerLink="/login" id="goback">Go back</a>
+<div style="padding-top:3%">
+  <div class="container">
+    <a routerLink="/login" id="goback">Voltar</a>
 
-  <h2>Join now</h2>
+    <span class="error" *ngIf="error" [@fallIn]='state'>{{ error }}</span>
 
-  <span class="error" *ngIf="error" [@fallIn]='state'>{{ error }}</span>
-    
-  <form #formData='ngForm' (ngSubmit)="onSubmit(formData)">
+    <form #formData='ngForm' (ngSubmit)="onSubmit(formData)">
+      <h2>Cadastrar Empresa</h2>
+      <div class="form-group">
+        <label for="empresa">Empresa</label>
+        <input type="text" class="form-control" (ngModel)="nome" name="nome" id="empresa" placeholder="Nome" required>
+      </div>
+      <div class="form-group">
+        <label for="proprietario">Proprietário</label>
+        <input type="text" class="form-control" (ngModel)="proprietario" name="proprietario" id="proprietario"  placeholder="Nome" required>
+      </div>
+      <div class="form-group">
+        <label for="contato">Contato</label>
+        <input type="text" data-format="(dd) ddddd-dddd" (ngModel)="contato" name="contato" value="(63) 99981-5210" class="form-control" id="nome" placeholder="(dd) ddddd-dddd">
+      </div>
+      <hr>
+      <label for="email">Usuário</label>
+      <input type="text" placeholder="E-mail" (ngModel)="email" name="email" class="form-control" required>
+      <br>
+      <input type="password" placeholder="Password" (ngModel)="password" name="password" class="form-control" required>
+      <br>
+      <button type="submit" [disabled]="!formData.valid" class="btn btn-primary">Cadastrar minha empresa</button>
+    </form>
+    <hr>
 
-    <input type="text" placeholder="Email address.." (ngModel)="email" name="email" class="txt" required>
-    <input type="password" placeholder="Password" (ngModel)="password" name="password" class="txt" required>
-
-
-    <button type="submit" [disabled]="!formData.valid" class="basic-btn">Create my account</button>
-  </form>
-</div>
+  </div>

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFire, AuthProviders, AuthMethods } from 'angularfire2';
-import { Router } from '@angular/router';
+import { CrudEmpresaService } from './../services/crud-empresa.service';
 
 @Component({
   selector: 'app-menu',
@@ -9,31 +8,16 @@ import { Router } from '@angular/router';
 })
 export class MenuComponent implements OnInit {
 
-  constructor(public af: AngularFire, private router: Router) { }
+  usuario = false;
 
-  ngOnInit() {
+  constructor(public crud: CrudEmpresaService) {
+    //var user = af.auth.getAuth();
+    //console.log("Usário está: " + user);
   }
 
   onSubmit(formData) {
-    if (formData.valid) {
-      console.log(formData.value);
-      this.af.auth.login({
-        email: formData.value.email,
-        password: formData.value.password
-      },
-        {
-          provider: AuthProviders.Password,
-          method: AuthMethods.Password,
-        }).then(
-        (success) => {
-          console.log(success + " Sucesso!");
-          this.router.navigate(['/members']);
-          //this.router.navigate(['/members']);
-        }).catch(
-        (err) => {
-          console.log(err);
-          console.log("Erro");
-        })
-    }
+    this.crud.logar(formData);
   }
+
+  ngOnInit() {}
 }
