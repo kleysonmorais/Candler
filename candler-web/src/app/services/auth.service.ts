@@ -1,5 +1,8 @@
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs/Rx";
+import 'rxjs/add/operator/do';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/take';
 
 import { CanActivate, Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { AngularFireAuth, AngularFire } from "angularfire2";
@@ -10,7 +13,7 @@ export class AuthGuard implements CanActivate {
 
   constructor(private auth: AngularFireAuth, private router: Router, public af: AngularFire) { }
 
-  canActivate(
+  /*canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean> | boolean {
@@ -22,9 +25,9 @@ export class AuthGuard implements CanActivate {
     });
     this.router.navigate(['/home']);
     return false;
-  }
+  }*/
 
-  /*canActivate(): Observable<boolean> {
+  canActivate(): Observable<boolean> {
     return Observable.from(this.auth).take(1).map(state => !!state).do(authenticated => {
       if (!authenticated) {
         this.router.navigate(['/home']);
@@ -33,6 +36,6 @@ export class AuthGuard implements CanActivate {
         console.log("Aceito");
       }
     })
-  }*/
+  }
 
 }

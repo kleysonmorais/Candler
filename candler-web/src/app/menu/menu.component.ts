@@ -12,21 +12,18 @@ import { empresa } from './../services/model/empresa';
 })
 export class MenuComponent implements OnInit{
 
-  public usuario = false;
+  public usuario;
   //private empresa;
   private cadastrando = false;
 
   constructor(public crud: CrudEmpresaService, private router: Router, public empresa: empresa) {
-    //var user = af.auth.getAuth();
-    //console.log("Usário está: " + user);
+    //Verificar se usuário está logado
+    this.crud.verificarUsuarioLogin();
+    
   }
 
   onSubmit(formData) {
     this.crud.logar(formData);
-  }
-
-  criarCupom(){
-    this.router.navigateByUrl('/criarCupom');
   }
 
   logout() {
@@ -46,6 +43,7 @@ export class MenuComponent implements OnInit{
         this.usuario = status;
       }
     );
+    
     
   }
   

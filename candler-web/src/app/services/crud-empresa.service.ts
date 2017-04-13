@@ -116,4 +116,15 @@ export class CrudEmpresaService {
     return this.empresa;
   }
 
+  verificarUsuarioLogin(){
+    this.af.auth.subscribe(auth => {
+      if (auth) {
+        console.log("Logado! " + auth.uid );
+        this.emitirLogin.emit(true);
+        this.resgatarDadosEmpresa();
+      }
+      
+    });
+  }
+
 }
