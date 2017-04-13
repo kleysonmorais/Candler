@@ -21,6 +21,9 @@ import { MembersComponent } from './login/members/members.component';
 import { AuthGuard } from './services/auth.service';
 import { QrcodeComponent } from './page-extra/qrcode/qrcode.component';
 import { CrudEmpresaService } from './services/crud-empresa.service';
+import { empresa } from './services/model/empresa';
+import { CriarCupomComponent } from './page-extra/criar-cupom/criar-cupom.component';
+import { CriarCupomService } from './page-extra/criar-cupom/criar-cupom.service';
 
 
 // Must export the config
@@ -45,7 +48,8 @@ export const firebaseConfig = {
     EmailComponent,
     SignupComponent,
     MembersComponent,
-    QrcodeComponent
+    QrcodeComponent,
+    CriarCupomComponent
   ],
   imports: [
     AlertModule.forRoot(),
@@ -56,7 +60,7 @@ export const firebaseConfig = {
     routing,
     QRCodeModule
   ],
-  providers: [ProdutosService, AuthGuard, CrudEmpresaService],
+  providers: [ProdutosService, AuthGuard, CrudEmpresaService, empresa, CriarCupomService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

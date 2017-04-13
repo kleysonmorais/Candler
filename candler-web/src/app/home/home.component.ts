@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
+import { CrudEmpresaService } from './../services/crud-empresa.service';
 
 @Component({
   selector: 'app-home',
@@ -8,12 +9,14 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  public usuario = false;
+  private empresa;
+  emitirCadastro = new EventEmitter<boolean>();
+
+  constructor(private router: Router, public crud: CrudEmpresaService) { }
 
   ngOnInit() {
+    
   }
 
-  login(){
-    this.router.navigateByUrl('/login');
-  }
 }

@@ -1,0 +1,39 @@
+<!--
+"id_lote": {
+            "info_lote": {
+              "nome": "Nome do Cupom",
+              "data_inicio": "xx/xx/xxxx",
+              "data_encerramento": "xx/xx/xxxx",
+              "descricao": "Contém as informações sobre o Lote",
+              "requisitos": "Requisitos Necessários para usar o Cupom",
+              "preco": "R$ 00.00 (Preço do Lote)",
+              "qtd_inicial": "xxx",
+              "qtd_atual": "xxx",
+              "status": "Disponível/Em uso/Indisponível (Status do Lote)"
+            },
+            "cupom": {
+              "id_cupom": {
+                "status": "Disponível/Usado/Indisponível"
+              }
+            }
+          }
+  
+-->
+
+<div style="padding-top:3%" class="container">
+  <form #formData='ngForm' (ngSubmit)="criarCupom(formData)">
+      <h2>Criar cupom</h2>
+      <div class="form-group">
+        <label for="nomeCupom">Nome do Cupom</label>
+        <input type="text" class="form-control" (ngModel)="nomeCupom" name="nomeCupom" id="nomeCupom" placeholder="Nome" required>
+      </div>
+      <div class="form-group">
+        <label for="descricao">Descrição</label>
+        <input type="text" class="form-control" (ngModel)="descricao" name="descricao" id="descricao"  placeholder="Descrição" required>
+      </div>
+      <hr>
+      <button type="submit" [disabled]="!formData.valid" class="btn btn-primary">Criar Cupom</button>
+  </form>
+
+  
+</div>

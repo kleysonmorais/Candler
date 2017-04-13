@@ -19,10 +19,6 @@ export class ProdutosComponent implements OnInit {
     this.cupons = this.produtosService.getCupom();
   }
 
-  adicionarCupom(nome, produto, desconto){
-    this.produtosService.adicionarCupom(nome, produto, desconto);
-    //console.log("Nome: " + nome);
-    nome = "";
-  }
+ 
 
 }

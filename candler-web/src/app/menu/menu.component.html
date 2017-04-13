@@ -13,15 +13,23 @@
       <li class="nav-item">
         <a class="nav-color" routerLink="qr">Qr-Code</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-color" (click)="criarCupom()" *ngIf="usuario">Criar Cupom</a>
+      </li>
     </ul>
 
-    <form class="form-inline my-2 my-lg-0" #formData='ngForm' (ngSubmit)="onSubmit(formData)">
-
+    <form *ngIf="!usuario" class="form-inline my-2 my-lg-0" #formData='ngForm' (ngSubmit)="onSubmit(formData)">
       <input class="form-control mr-sm-2" type="text" placeholder="E-mail" (ngModel)="email" name="email">
       <input class="form-control mr-sm-2" type="password" placeholder="Senha" (ngModel)="password" name="password" required>
-
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit" [disabled]="!formData.valid">Entrar</button>
-      
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit" [disabled]="!formData.valid">Entrar Agora</button>
     </form>
+    
+    <div *ngIf="!usuario" style="padding-left:1%" class="form-inline my-2 my-lg-0">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="button" (click)="cadastrarEmpresa()">Criar Empresa</button>
+    </div>
+
+    <div *ngIf="usuario">
+      <p style="font-size:16px" class="navbar-menu">Bem Vindo, {{ empresa.nome }}. <b><a (click)="logout()" routerLink="">Sair</a></b></p>
+    </div>
   </div>
 </nav>

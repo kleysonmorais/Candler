@@ -1,6 +1,6 @@
-<div style="padding-top:3%">
-  <div class="container">
-    <a routerLink="/login" id="goback">Voltar</a>
+
+  <div style="padding-top:3%" class="container">
+    <a routerLink="/home" id="goback">Voltar</a>
 
     <span class="error" *ngIf="error" [@fallIn]='state'>{{ error }}</span>
 
@@ -26,6 +26,5 @@
       <br>
       <button type="submit" [disabled]="!formData.valid" class="btn btn-primary">Cadastrar minha empresa</button>
     </form>
-    <hr>
 
   </div>

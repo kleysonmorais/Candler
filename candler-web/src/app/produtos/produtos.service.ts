@@ -12,7 +12,7 @@ export class ProdutosService {
     { id: 2, nome: "Lote 2", descricao: "Descrição do lote 2" },
     { id: 3, nome: "Lote 3", descricao: "Descrição do lote 3" }
     ];
-    this.cupom = af.database.list("/cupom/empresa");
+    this.cupom = af.database.list("cupom/");
     //console.log(this.cupom);
   }
 

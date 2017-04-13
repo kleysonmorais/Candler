@@ -14,32 +14,12 @@
     </div>
   </div>
 
-  <form style="padding-top: 5%">
-    <div class="form-group">
-      <label for="exampleInputEmail1">Empresa</label>
-      <input #nome type="text" class="form-control" id="exampleInputEmail1" placeholder="Nome">
-    </div>
-    <div class="form-group">
-      <label for="exampleInput">Produto</label>
-      <input #produto type="text" class="form-control" id="exampleInput" placeholder="Nome do Produto">
-    </div>
-    <div class="form-group">
-      <label for="exampleSelect1">Desconto</label>
-      <select #desconto class="form-control" id="exampleSelect">
-      <option>10%</option>
-      <option>20%</option>
-      <option>30%</option>
-      <option>40%</option>
-      <option>50%</option>
-    </select>
-    </div>
-    <button type="submit" class="btn btn-primary" (click)="adicionarCupom(nome.value, produto.value, desconto.value)">Enviar</button>
-  </form>
+ 
 
   <div class="container" style="padding-top: 5%">
     <div class="row">
       <ul class="list-group">
-        <li *ngFor="let cupom of cupons | async" class="list-group-item">Empresa: {{cupom.nome}}</li>
+        <li *ngFor="let cupom of cupons | async" class="list-group-item">Empresa: {{cupom.info_lote.nome}}</li>
       </ul>
       <!--<div class="col" *ngFor="let cupom of cupons | async">
         <div class="card" style="width: 20rem;">
