@@ -24,22 +24,22 @@
 
   <div class="container">
 
-    <div class="row">
-      <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
-      <div class="list-group">
-        
-          <li *ngFor="let cupom of cupons | async" class="list-group-item">
+    <div *ngFor="let cupom of cupons | async" style="padding-top:2%">
 
-            <div class="card-block">
-              <h4 class="card-title">Nome: {{ cupom.info_lote.nome }}</h4>
-              <p class="card-text">Descrição: {{ cupom.info_lote.descricao }}</p>
-              <a class="btn btn-primary">Comprar</a>
-            </div>
-
-          </li>
-
-        
+      <div class="card text-center">
+        <div class="card-header">
+          Novidade
+        </div>
+        <div class="card-block">
+          <h4 class="card-title">{{ cupom.info_lote.nome }}</h4>
+          <p class="card-text">{{ cupom.info_lote.descricao }}</p>
+          <a [routerLink]="['/produto', cupom.$key]" class="btn btn-primary">Comprar</a>
+        </div>
+        <div class="card-footer text-muted">
+          R$ {{ cupom.info_lote.valor }}
+        </div>
       </div>
+
     </div>
 
   </div>

@@ -32,6 +32,7 @@ export class AuthGuard implements CanActivate {
       if (!authenticated) {
         this.router.navigate(['/home']);
         console.log("Recusado");
+        alert("Você precisa estar logado para acessar esta página!");
       }else{
         console.log("Aceito");
       }

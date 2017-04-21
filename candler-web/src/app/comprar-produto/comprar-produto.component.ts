@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { AngularFire, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2';
 
 import { ProdutosService } from '../produtos/produtos.service';
+import { cupom } from '../services/model/cupom';
+
 
 @Component({
   selector: 'app-comprar-produto',
@@ -10,22 +13,25 @@ import { ProdutosService } from '../produtos/produtos.service';
 })
 export class ComprarProdutoComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute, private produtosService: ProdutosService) { }
-
   inscricao: any;
-  id:number;
-  produto: any;
+  id: number;
+  ///cupom_aux: any;
+
+  cup: FirebaseObjectObservable<any>;
+
+  constructor(private route: ActivatedRoute, private produtosService: ProdutosService, public cupom_aux: cupom) {}
 
   ngOnInit() {
-      this.inscricao = this.route.params.subscribe(
-        (params: any) => {
-          this.id = params['id'];
-          this.produto = this.produtosService.getProduto(this.id-1);
-        }
-      )
+    //Recebe o Id da url e chama função para atualizar dados desta view
+    this.inscricao = this.route.params.subscribe(
+      (params: any) => {
+        this.id = params['id'];
+        this.produtosService.resgatarCupom(this.id);
+      }
+    );
   }
 
-  ngOnDestroy(){
+  ngOnDestroy() {
     this.inscricao.unsubscribe();
   }
 

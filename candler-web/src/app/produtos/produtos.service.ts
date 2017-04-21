@@ -1,44 +1,42 @@
-import { Injectable } from '@angular/core';
-import { AngularFire, FirebaseListObservable } from 'angularfire2';
+import { Injectable, EventEmitter } from '@angular/core';
+import { AngularFire, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2';
 
+import { cupom } from '../services/model/cupom';
 
 @Injectable()
 export class ProdutosService {
 
-  produtos: any[];
-  cupom: FirebaseListObservable<any>;
-  constructor(af: AngularFire) {
-    this.produtos = [{ id: 1, nome: "Lote 1", descricao: "Descrição do lote 1" },
-    { id: 2, nome: "Lote 2", descricao: "Descrição do lote 2" },
-    { id: 3, nome: "Lote 3", descricao: "Descrição do lote 3" }
-    ];
-    this.cupom = af.database.list("cupom/");
-    //console.log(this.cupom);
+  cupons: FirebaseListObservable<any>;
+  item: FirebaseObjectObservable<any>;
+
+  constructor(public af: AngularFire, public cupom_aux: cupom) {
+    this.cupons = af.database.list("cupom/");
   }
 
-  getProdutos() {
-    return this.produtos;
-  }
-
-  getProduto(id: number) {
-    for (let i = 0; i < this.produtos.length; i++) {
-      let cont = this.produtos[id];
-      if (cont == this.produtos[i]) {
-        return cont;
-      }
-    }
-    return null;
+  resgatarCupom(id: number) {
+    //Resgata o cupom do id informado
+    var item;
+    console.log("Resgatando Cupom: " + id);
+    item = this.af.database.object('cupom/' + id + "/info_lote/", { preserveSnapshot: true });
+    item.subscribe(snapshot => {
+      this.cupom_aux.atualizaCupom(snapshot.val().nome, snapshot.val().descricao, snapshot.val().id_empresa_mae, snapshot.val().valor, id);
+      console.log("Cupom Atualizado: " + snapshot.val().nome);
+    });
   }
 
   getCupom() {
-    return this.cupom;
+    //Retorna lista com cupons
+    return this.cupons;
+  }
+
+  getCupomUnico() {
+    //Retorna cupom especifico
+    return this.cupom_aux;
   }
 
   adicionarCupom(_empresa, _produto, _desconto) {
-    console.log("1");
     if (_empresa && _produto && _desconto) {
-        console.log("2");
-        this.cupom.push({
+      this.cupons.push({
         nome: _empresa,
         produto: _produto,
         desconto: _desconto

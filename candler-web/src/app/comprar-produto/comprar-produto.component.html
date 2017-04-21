@@ -2,7 +2,7 @@
   <p>
     Id: {{ id }}
   </p>
-  <p>
-    Produto: {{ produto?.nome }}
+  <p *ngIf="cupom_aux?.nome">
+    Cupom: {{ cupom_aux?.nome }}
   </p>
 </div>

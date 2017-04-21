@@ -22,6 +22,7 @@ import { AuthGuard } from './services/auth.service';
 import { QrcodeComponent } from './page-extra/qrcode/qrcode.component';
 import { CrudEmpresaService } from './services/crud-empresa.service';
 import { empresa } from './services/model/empresa';
+import { cupom } from './services/model/cupom';
 import { CriarCupomComponent } from './page-extra/criar-cupom/criar-cupom.component';
 import { CriarCupomService } from './page-extra/criar-cupom/criar-cupom.service';
 
@@ -60,7 +61,7 @@ export const firebaseConfig = {
     routing,
     QRCodeModule
   ],
-  providers: [ProdutosService, AuthGuard, CrudEmpresaService, empresa, CriarCupomService],
+  providers: [ProdutosService, AuthGuard, CrudEmpresaService, empresa, CriarCupomService, cupom],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

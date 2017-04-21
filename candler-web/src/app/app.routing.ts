@@ -13,10 +13,10 @@ import { QrcodeComponent } from './page-extra/qrcode/qrcode.component';
 import { CriarCupomComponent } from './page-extra/criar-cupom/criar-cupom.component';
 
 const APP_ROUTES: Routes = [
-    {path: 'produtos', component: ProdutosComponent},
+    {path: 'produtos', component: ProdutosComponent}, 
     {path: '', component: HomeComponent},
     {path: 'home', component: HomeComponent},
-    {path: 'produto/:id', component: ComprarProdutoComponent},
+    {path: 'produto/:id', component: ComprarProdutoComponent, canActivate: [AuthGuard]},
     { path: 'login', component: LoginComponent },
     { path: 'signup', component: SignupComponent },
     { path: 'login-email', component: EmailComponent },

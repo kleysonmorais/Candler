@@ -10,12 +10,11 @@ import { ProdutosService } from './produtos.service';
 })
 export class ProdutosComponent implements OnInit {
 
-  produtos:any[];
   cupons: FirebaseListObservable<any>;
   constructor(private produtosService: ProdutosService) {}
 
   ngOnInit() {
-    this.produtos = this.produtosService.getProdutos();
+    //Atualiza lista com os cupons
     this.cupons = this.produtosService.getCupom();
   }
 
