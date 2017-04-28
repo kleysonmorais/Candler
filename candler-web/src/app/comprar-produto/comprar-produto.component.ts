@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AngularFire, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2';
 
+import { ComprarProdutoService } from './comprar-produto.service';
 import { ProdutosService } from '../produtos/produtos.service';
 import { cupom } from '../services/model/cupom';
 
@@ -11,7 +12,7 @@ import { cupom } from '../services/model/cupom';
   templateUrl: './comprar-produto.component.html',
   styleUrls: ['./comprar-produto.component.css']
 })
-export class ComprarProdutoComponent implements OnInit {
+export class ComprarProdutoComponent implements OnInit, OnDestroy {
 
   inscricao: any;
   id: number;
@@ -19,7 +20,7 @@ export class ComprarProdutoComponent implements OnInit {
 
   cup: FirebaseObjectObservable<any>;
 
-  constructor(private route: ActivatedRoute, private produtosService: ProdutosService, public cupom_aux: cupom) {}
+  constructor(private route: ActivatedRoute, private produtosService: ProdutosService, public cupom_aux: cupom, public comprarService: ComprarProdutoService) { }
 
   ngOnInit() {
     //Recebe o Id da url e chama função para atualizar dados desta view
@@ -33,6 +34,13 @@ export class ComprarProdutoComponent implements OnInit {
 
   ngOnDestroy() {
     this.inscricao.unsubscribe();
+  }
+
+  confirmarCompra(formData) {
+    if (formData.valid) {
+      console.log("Confirmar Compra ");
+      this.comprarService.criarCandler(formData, 10);
+    }
   }
 
 }

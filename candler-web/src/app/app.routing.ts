@@ -11,6 +11,7 @@ import { MembersComponent } from './login/members/members.component';
 import { AuthGuard } from './services/auth.service';
 import { QrcodeComponent } from './page-extra/qrcode/qrcode.component';
 import { CriarCupomComponent } from './page-extra/criar-cupom/criar-cupom.component';
+import { MeuEspacoComponent } from './page-extra/meu-espaco/meu-espaco.component';
 
 const APP_ROUTES: Routes = [
     {path: 'produtos', component: ProdutosComponent}, 
@@ -21,9 +22,8 @@ const APP_ROUTES: Routes = [
     { path: 'signup', component: SignupComponent },
     { path: 'login-email', component: EmailComponent },
     { path: 'criarCupom', component: CriarCupomComponent, canActivate: [AuthGuard] },
-    { path: 'qr', component: QrcodeComponent }
-    
-    
+    { path: 'qr/:id', component: QrcodeComponent, canActivate: [AuthGuard] },
+    { path: 'meuEspaco', component: MeuEspacoComponent, canActivate: [AuthGuard]}
 ];
 
 export const routing: ModuleWithProviders = RouterModule.forRoot(APP_ROUTES);

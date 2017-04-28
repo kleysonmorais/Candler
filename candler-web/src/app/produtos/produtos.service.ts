@@ -10,14 +10,14 @@ export class ProdutosService {
   item: FirebaseObjectObservable<any>;
 
   constructor(public af: AngularFire, public cupom_aux: cupom) {
-    this.cupons = af.database.list("cupom/");
+    this.cupons = af.database.list("lote_cupom/");
   }
 
   resgatarCupom(id: number) {
     //Resgata o cupom do id informado
     var item;
     console.log("Resgatando Cupom: " + id);
-    item = this.af.database.object('cupom/' + id + "/info_lote/", { preserveSnapshot: true });
+    item = this.af.database.object("lote_cupom/" + id + "/info_lote/", { preserveSnapshot: true });
     item.subscribe(snapshot => {
       this.cupom_aux.atualizaCupom(snapshot.val().nome, snapshot.val().descricao, snapshot.val().id_empresa_mae, snapshot.val().valor, id);
       console.log("Cupom Atualizado: " + snapshot.val().nome);

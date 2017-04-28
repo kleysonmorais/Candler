@@ -2,10 +2,28 @@
 
   <h1 style="padding-top:5%">
     Angular QR Code</h1>
-
+<!--
   <qr-code [value]="qr" [size]="150"></qr-code>
 
   <input (keyup)="onKey($event)" type="text" class="form-control" id="qr" placeholder="qr">
 
-  <p> {{ qr }} </p>
+  <p> {{ qr }} </p>-->
+
+  <div *ngFor="let candler of candlers | async" style="padding-top:2%">
+    <div class="card text-center" >
+      <div class="card-header" style="color:green" *ngIf="( candler.status == 'Disponivel' )">
+        <b>Info_lote: {{ candler.status }}</b>
+      </div>
+      <div class="card-header" style="color:red" *ngIf="( candler.status == 'Indisponivel' )">
+        <b>Info_lote: {{ candler.status }}</b>
+      </div>
+      <div class="card-block">
+        <h4 class="card-title">id_lote: {{ candler.$key }}</h4>
+        <qr-code value="{{ candler.$key }}" [size]="150"></qr-code>
+      </div>
+      <div class="card-footer text-muted">
+        2 days ago
+      </div>
+    </div>
+  </div>
 </div>

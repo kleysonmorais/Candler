@@ -24,7 +24,7 @@ export class CrudEmpresaService {
           method: AuthMethods.Password,
         }).then(
         (success) => {
-          this.emitirLogin.emit(true);
+          //this.emitirLogin.emit(true);
           this.router.navigate(['/home']);
           this.resgatarDadosEmpresa();
         }).catch(
@@ -43,6 +43,7 @@ export class CrudEmpresaService {
     console.log('logged out');
     this.emitirLogin.emit(false);
     //this.empresa = undefined;
+    this.empresa.setNull();
     this.router.navigateByUrl('/home');
   }
 
@@ -91,7 +92,7 @@ export class CrudEmpresaService {
   }
 
   resgatarDadosEmpresa() {
-    console.log("Resgatando Dados");
+    //console.log("Resgatando Dados");
     var uid;
     var item;
     this.af.auth.subscribe(auth => {
@@ -106,14 +107,16 @@ export class CrudEmpresaService {
           this.empresa.setId(uid);
           this.empresa.setNome(snapshot.val().nome),
           this.empresa.setProprietario(snapshot.val().proprietario),
-          this.empresa.setContato(snapshot.val().contato)
+          this.empresa.setContato(snapshot.val().contato),
+          console.log("Empresa Atualizada: " + this.empresa.getId()),
+          this.emitirLogin.emit(true)
         });
       }
     });
   }
 
   getEmpresa() {
-    return this.empresa;
+    return this.empresa;////
   }
 
   verificarUsuarioLogin(){

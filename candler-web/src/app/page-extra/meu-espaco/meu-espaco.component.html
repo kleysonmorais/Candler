@@ -1,0 +1,87 @@
+<div class="container espacamento-menu">
+  <h2>Meu Espaço</h2>
+  <h4>Seus Candlers: </h4>
+
+  <div *ngFor="let lote of lote_candler | async" style="padding-top:2%">
+    <div class="card text-center" >
+      <div class="card-header">
+        Info_lote: {{ lote.status }}
+      </div>
+      <div class="card-block">
+        <h4 class="card-title">id_lote: {{ lote.$key }}</h4>
+        <p class="card-text">Descrição</p>
+        <a [routerLink]="['/qr', lote.$key]" class="btn btn-primary">Visualizar</a>
+      </div>
+      <div class="card-footer text-muted">
+        2 days ago
+      </div>
+    </div>
+  </div>
+  <!--<div id="accordion" role="tablist" aria-multiselectable="true">
+    <div class="card" *ngFor="let lote of lote_candler | async">
+      <div class="card-header" role="tab" id="headingOne">
+        <h5 class="mb-0">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          id_lote: {{ lote.$key }} 
+        </a>
+        </h5>
+      </div>
+      <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
+        <div class="card-block">
+          Info_lote: {{ lote.info_lote.status }}
+        
+        </div>
+      </div>
+    </div>
+
+    <div *ngFor="let candler of candlers">
+
+
+      <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+          <h1 class="display-3">id_lote: {{ candler.id }}</h1>
+          <p class="lead">Status: {{ candler.status }}
+            <br> Qr: {{ candler.qrcode }}
+          </p>
+        </div>
+      </div>
+
+      <div class="card" style="width: 20rem;">
+        <img class="card-img-top" src="..." alt="Card image cap">
+        <div class="card-block">
+          <h4 class="card-title">id_lote: {{ candler.id }}</h4>
+          <p class="card-text">Status: {{ candler.status }}
+            <br> Qr: {{ candler.qrcode }}</p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Cras justo odio</li>
+          <li class="list-group-item">Dapibus ac facilisis in</li>
+          <li class="list-group-item">Vestibulum at eros</li>
+        </ul>
+        <div class="card-block">
+          <a href="#" class="card-link">Card link</a>
+          <a href="#" class="card-link">Another link</a>
+        </div>
+      </div>
+
+      <div class="card-header" role="tab" id="headingOne">
+        <h5 class="mb-0">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          id_lote: {{ candler.id }} 
+        </a>
+        </h5>
+      </div>
+      <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
+        <div class="card-block">
+          Status: {{ candler.status }}
+          <br> Qr: {{ candler.qrcode }}
+        </div>
+      </div>
+
+
+    </div>
+
+  </div>
+-->
+
+</div>

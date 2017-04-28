@@ -58,5 +58,12 @@ export class empresa {
     this.id = _id;
   }
 
-
+  setNull(){
+    this.id = null;
+    this.email = null;
+    this.contato = null;
+    this.nome = null;
+    this.proprietario = null;
+    this.senha = null;
+  }
 }

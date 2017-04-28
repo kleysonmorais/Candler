@@ -5,4 +5,24 @@
   <p *ngIf="cupom_aux?.nome">
     Cupom: {{ cupom_aux?.nome }}
   </p>
+  <form #formData='ngForm' (ngSubmit)="confirmarCompra(formData)">
+      <h2>Criar Candler</h2>
+      <div class="form-group">
+        <label for="nomeCandler">Nome do Candler</label>
+        <input type="text" class="form-control" (ngModel)="nomeCandler" name="nomeCandler" id="nomeCandler" placeholder="Nome" required>
+      </div>
+      <div class="form-group">
+        <label for="descricao">Descrição</label>
+        <input type="text" class="form-control" (ngModel)="descricao" name="descricao" id="descricao"  placeholder="Descrição" required>
+      </div>
+      <hr>
+      <button type="submit" [disabled]="!formData.valid" class="btn btn-primary">Criar Candler</button>
+  </form>
+  <!--<div class="form-group row">
+    <label for="example-number-input" class="col-2 col-form-label">Quantidade de Candlers</label>
+    <div class="col-10">
+      <input #quantidade class="form-control" type="number" value="10" id="example-number-input">
+    </div>
+  </div>
+  <button type="submit" (click)="confirmarCompra(quantidade.value)" class="btn btn-primary">Confirmar</button>-->
 </div>

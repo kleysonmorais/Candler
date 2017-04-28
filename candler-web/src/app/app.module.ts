@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
 import { QRCodeModule } from 'angular2-qrcode';
+import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { ProdutosService } from './produtos/produtos.service';
@@ -14,6 +14,7 @@ import { ProdutosComponent } from './produtos/produtos.component';
 import { HomeComponent } from './home/home.component';
 import { routing } from './app.routing';
 import { ComprarProdutoComponent } from './comprar-produto/comprar-produto.component';
+import { ComprarProdutoService } from './comprar-produto/comprar-produto.service';
 import { LoginComponent } from './login/login/login.component';
 import { EmailComponent } from './login/email/email.component';
 import { SignupComponent } from './login/signup/signup.component';
@@ -25,7 +26,8 @@ import { empresa } from './services/model/empresa';
 import { cupom } from './services/model/cupom';
 import { CriarCupomComponent } from './page-extra/criar-cupom/criar-cupom.component';
 import { CriarCupomService } from './page-extra/criar-cupom/criar-cupom.service';
-
+import { MeuEspacoComponent } from './page-extra/meu-espaco/meu-espaco.component';
+import { CrudCandlerService } from './services/crud-candler.service';
 
 // Must export the config
 export const firebaseConfig = {
@@ -50,18 +52,20 @@ export const firebaseConfig = {
     SignupComponent,
     MembersComponent,
     QrcodeComponent,
-    CriarCupomComponent
+    CriarCupomComponent,
+    MeuEspacoComponent
   ],
   imports: [
     AlertModule.forRoot(),
     BrowserModule,
     FormsModule,
     HttpModule,
+    QRCodeModule,
     AngularFireModule.initializeApp(firebaseConfig),
-    routing,
-    QRCodeModule
+    routing
   ],
-  providers: [ProdutosService, AuthGuard, CrudEmpresaService, empresa, CriarCupomService, cupom],
+  providers: [ProdutosService, AuthGuard, CrudEmpresaService, empresa, CriarCupomService, cupom, ComprarProdutoService,
+              CrudCandlerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
