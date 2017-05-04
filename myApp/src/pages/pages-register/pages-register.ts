@@ -1,70 +1,53 @@
 import { Component, NgZone } from '@angular/core';
-import { NavController, AlertController, NavParams, LoadingController } from 'ionic-angular';
+import { NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
 import { FormBuilder, Validators } from '@angular/forms';
-import { PagesRegisterPage } from '../pages-register/pages-register';
-import { ResetpwdPage } from '../resetpwd/resetpwd';
-import { PagesLoginAuthService } from '../../providers/pages-login-auth-service';
 //import { ProgressoPage } from '../progresso/progresso';
-import { TabsPage } from '../tabs/tabs';
-//import { AngularFire } from 'angularfire2';
+import { PagesLoginAuthService } from '../../providers/pages-login-auth-service';
 import firebase from 'firebase';
+import { TabsPage } from '../tabs/tabs';
 /*
-  Generated class for the Login page.
+  Generated class for the PagesRegister page.
 
   See http://ionicframework.com/docs/v2/components/#navigation for more info on
   Ionic pages and navigation.
 */
 @Component({
-  selector: 'page-login',
-  templateUrl: 'login.html'
+  selector: 'page-pages-register',
+  templateUrl: 'pages-register.html'
 })
-export class LoginPage {
-  //https://github.com/driftyco/ionic/issues/9589
-  public loginForm;
+export class PagesRegisterPage {
+
+  public registerForm;
   emailChanged: boolean = false;
   passwordChanged: boolean = false;
+  fullnameChanged: boolean = false;
   submitAttempt: boolean = false;
   loading: any;
   zone: NgZone;
 
-  constructor(public navCtrl: NavController, public authService: PagesLoginAuthService, public navParams: NavParams, public formBuilder: FormBuilder, public alertCtrl: AlertController, public loadingCtrl: LoadingController) {
+  constructor(public navCtrl: NavController, public authService: PagesLoginAuthService, public navParams: NavParams, public formBuilder: FormBuilder,public alertCtrl: AlertController, public loadingCtrl: LoadingController) {
     let EMAIL_REGEXP = /^[a-z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$/i;
-    this.loginForm = formBuilder.group({
+    this.registerForm = formBuilder.group({
       email: ['', Validators.compose([Validators.required, Validators.pattern(EMAIL_REGEXP)])],
+      fullname: ['', Validators.compose([ Validators.required])],
       password: ['', Validators.compose([Validators.minLength(6), Validators.required])]
     });
-    console.log("Página de login");
     this.zone = new NgZone({});
   }
 
-  elementChanged(input) {
+  elementChanged(input){
     let field = input.inputControl.name;
     this[field + "Changed"] = true;
   }
 
-  register() {
-    console.log("Chamando Registro");
-    //this.navCtrl.push(PagesRegisterPage);
-    this.zone.run(() => {
-      this.navCtrl.push(PagesRegisterPage);
-    });
-  }
-
-  resetPwd() {
-    //this.navCtrl.push(ResetpwdPage);
-    this.zone.run(() => {
-      this.navCtrl.push(ResetpwdPage);
-    });
-  }
-
-  loginUser() {
+  doRegister(){
     this.submitAttempt = true;
 
-    if (!this.loginForm.valid) {
-      console.log(this.loginForm.value);
+    if (!this.registerForm.valid){
+      console.log(this.registerForm.value);
     } else {
-      this.authService.doLogin(this.loginForm.value.email, this.loginForm.value.password).then(authService => {
-
+      this.authService.register(this.registerForm.value.email, this.registerForm.value.password, this.registerForm.value.fullname).then( authService => {
+        //this.navCtrl.setRoot(ProgressoPage);
         const unsubscribe = firebase.auth().onAuthStateChanged((user) => {
           this.zone.run(() => {
             if (user) {
@@ -75,9 +58,9 @@ export class LoginPage {
             }
           });
         });
-
+        console.log("Criado com Sucesso");
       }, error => {
-        this.loading.dismiss().then(() => {
+        this.loading.dismiss().then( () => {
           let alert = this.alertCtrl.create({
             message: error.message,
             buttons: [
@@ -87,7 +70,6 @@ export class LoginPage {
               }
             ]
           });
-          console.log("Erro");
           alert.present();
         });
       });
@@ -98,5 +80,6 @@ export class LoginPage {
       this.loading.present();
     }
   }
+
 
 }
