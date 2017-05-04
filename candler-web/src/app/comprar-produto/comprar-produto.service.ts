@@ -29,16 +29,20 @@ export class ComprarProdutoService {
 
   comprarLote(formData, id) {
    this.af.database.object('empresa/' + this.empresa.getId() + "/lote_filho/" + id).set({
-      status: "Disponivel"
-    });
-
-    this.af.database.object('lote_candler/' + id + '/info_lote').set({
       id_empresa_mae: this.empresa.getId(),
       nome: formData.value.nomeCandler,
       descricao: formData.value.descricao,
       valor: "99.99",
       status: "Disponivel"
     });
+
+    /*this.af.database.object('lote_candler/' + id + '/info_lote').set({
+      id_empresa_mae: this.empresa.getId(),
+      nome: formData.value.nomeCandler,
+      descricao: formData.value.descricao,
+      valor: "99.99",
+      status: "Disponivel"
+    });*/
   }
 
   criarCandlers(id_lote, quantidade) {
