@@ -21,7 +21,9 @@
     <ion-icon ios="ios-exit" md="md-exit"></ion-icon>
   </button>
   </ion-buttons>
-
+  <br>
+  
+  <br>
   <ion-card *ngFor="let candler of candlers | async">
 
     <ion-item>
@@ -33,22 +35,10 @@
     </ion-item>
 
     <ion-card-content>
-      <p> {{ candler.descricao }} </p>
+      <p> {{ candler.descricao }}</p>
     </ion-card-content>
-
+    <progress-bar progress="{{ candler.pontuacao }}"></progress-bar>
     <ion-row>
-      <ion-col>
-        <button ion-button icon-left clear small>
-        <ion-icon name="thumbs-up"></ion-icon>
-        <div>12 Likes</div>
-      </button>
-      </ion-col>
-      <ion-col>
-        <button ion-button icon-left clear small>
-        <ion-icon name="text"></ion-icon>
-        <div>4 Comments</div>
-      </button>
-      </ion-col>
       <ion-col center text-center>
         <ion-note>
           11h ago

@@ -31,7 +31,7 @@ export class CrudCandler {
     var tamanho = id.length;
     var id_lote = id.substring(0, tamanho - 1);
     //console.log("IdLote: " + id_lote);
-    var id_candler = id.substring(tamanho - 1, tamanho);
+    // var id_candler = id.substring(tamanho - 1, tamanho);
     //console.log("IdCandler: " + id_candler);
     this.verificarDisponibilidade(id_lote, id);
   }

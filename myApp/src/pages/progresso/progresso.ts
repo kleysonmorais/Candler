@@ -7,6 +7,7 @@ import { AngularFire, FirebaseListObservable } from 'angularfire2';
 import { CrudCandler } from '../../providers/crud-candler';
 //import { LoginPage } from '../login/login';
 import { HomePage } from '../home/home';
+//import { ProgressBarComponent } from '../../components/progress-bar/progress-bar'
 
 
 @Component({
@@ -18,6 +19,7 @@ export class ProgressoPage {
   zone: NgZone;
 
   candlers: FirebaseListObservable<any>;
+  progressoBar;
 
   constructor(public af:AngularFire, public crudCandler: CrudCandler, public appCtrl: App, public navCtrl: NavController, public navParams: NavParams, public authService: PagesLoginAuthService) {
     var uid;
@@ -29,6 +31,7 @@ export class ProgressoPage {
       }
     })
     this.zone = new NgZone({});
+    this.progressoBar = 10;
   }
 
   ionViewDidLoad() {

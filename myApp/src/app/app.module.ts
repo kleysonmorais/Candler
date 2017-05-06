@@ -7,12 +7,14 @@ import { ProgressoPage } from '../pages/progresso/progresso';
 import { LoginPage } from '../pages/login/login';
 import { PagesLoginAuthService } from '../providers/pages-login-auth-service';
 import { PagesRegisterPage } from '../pages/pages-register/pages-register';
+import { MeusCuponsPage } from '../pages/meus-cupons/meus-cupons';
 import { ResetpwdPage } from '../pages/resetpwd/resetpwd';
 import firebase from 'firebase';
 import { BarcodeScanner } from 'ionic-native';
 import { CrudCandler } from '../providers/crud-candler';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { ProgressBarComponent } from '../components/progress-bar/progress-bar';
 
 
 // Import the AF2 Module
@@ -42,7 +44,9 @@ const firebaseAuthConfig = {
     HomePage,
     TabsPage,
     PagesRegisterPage,
-    ResetpwdPage
+    ResetpwdPage,
+    MeusCuponsPage,
+    ProgressBarComponent
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -56,7 +60,8 @@ const firebaseAuthConfig = {
     HomePage,
     TabsPage,
     PagesRegisterPage,
-    ResetpwdPage
+    ResetpwdPage,
+    MeusCuponsPage
   ],
   providers: [
     StatusBar,

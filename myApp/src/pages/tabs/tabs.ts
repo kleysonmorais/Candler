@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
-import { HomePage } from '../home/home';
+//import { HomePage } from '../home/home';
+import { MeusCuponsPage } from '../meus-cupons/meus-cupons';
 import { ProgressoPage } from '../progresso/progresso';
 
 @Component({
@@ -9,7 +10,7 @@ import { ProgressoPage } from '../progresso/progresso';
 export class TabsPage {
   //Define controller das tabs
   tab1Root: any = ProgressoPage;
-  tab2Root: any = HomePage;
+  tab2Root: any = MeusCuponsPage;
   constructor() {
 
   }
