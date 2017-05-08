@@ -26,7 +26,7 @@ export class ProgressoPage {
     this.af.auth.subscribe(auth => {
       if (auth) {
         uid = auth.uid;
-        console.log("cliente/" + uid + "/candler");
+        //console.log("cliente/" + uid + "/candler");
         this.candlers = this.af.database.list("cliente/" + uid + "/candler");
       }
     })
