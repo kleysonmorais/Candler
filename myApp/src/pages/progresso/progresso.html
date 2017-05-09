@@ -37,7 +37,7 @@
     <ion-card-content>
       <p> {{ candler.descricao }}</p>
     </ion-card-content>
-    <progress-bar progress="{{ candler.pontuacao_atual }}"></progress-bar>
+    <progress-bar progress="{{ (100/candler.quantidade_troca * candler.pontuacao_atual) | number : '1.0-1'}}"></progress-bar>
     <ion-row>
       <ion-col center text-center>
         <ion-note>

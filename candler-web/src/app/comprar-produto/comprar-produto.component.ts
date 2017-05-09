@@ -39,7 +39,7 @@ export class ComprarProdutoComponent implements OnInit, OnDestroy {
   confirmarCompra(formData) {
     if (formData.valid) {
       console.log("Confirmar Compra ");
-      this.comprarService.criarCandler(formData, 10);
+      this.comprarService.criarCandler(formData, 10, this.id);
     }
   }
 

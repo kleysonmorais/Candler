@@ -19,7 +19,7 @@ export class ProgressoPage {
   zone: NgZone;
 
   candlers: FirebaseListObservable<any>;
-  progressoBar;
+  
 
   constructor(public af:AngularFire, public crudCandler: CrudCandler, public appCtrl: App, public navCtrl: NavController, public navParams: NavParams, public authService: PagesLoginAuthService) {
     var uid;
@@ -31,7 +31,8 @@ export class ProgressoPage {
       }
     })
     this.zone = new NgZone({});
-    this.progressoBar = 10;
+
+    //(quantidade_troca/100)*pontuacao_atual;  
   }
 
   ionViewDidLoad() {
@@ -73,4 +74,6 @@ export class ProgressoPage {
         alert(error);
       })
   }
+
+  
 }

@@ -9,7 +9,7 @@ export class ComprarProdutoService {
 
   constructor(public af: AngularFire, private router: Router, public empresa: empresa) { }
 
-  criarCandler(formData, quantidade) {
+  criarCandler(formData, quantidade, empresa_mae_id) {
     var id_lote = Math.floor(Math.random() * 9999) + 1;
     console.log("ID gerado: " + id_lote);
     this.af.auth.subscribe(auth => {
@@ -19,7 +19,7 @@ export class ComprarProdutoService {
         var id: string;
         id = this.empresa.getId() + id_lote;
         console.log("Id: " + this.empresa.getId());
-        this.comprarLote(formData, id);
+        this.comprarLote(formData, id, empresa_mae_id);
         this.criarCandlers(id, quantidade);
         this.router.navigate(['/home']);
         alert("Candlers criados com sucesso!");
@@ -27,22 +27,27 @@ export class ComprarProdutoService {
     });
   }
 
-  comprarLote(formData, id) {
+  comprarLote(formData, id, empresa_mae_id: string) {
    this.af.database.object('empresa/' + this.empresa.getId() + "/lote_filho/" + id).set({
-      id_empresa_mae: this.empresa.getId(),
+      /*id_empresa_mae: this.empresa.getId(),
       nome: formData.value.nomeCandler,
       descricao: formData.value.descricao,
-      valor: "99.99",
-      status: "Disponivel"
+      valor: "99.98",*///
+      status: "Disponivel"//
     });
 
-    /*this.af.database.object('lote_candler/' + id + '/info_lote').set({
-      id_empresa_mae: this.empresa.getId(),
+    var empresa_mae = empresa_mae_id.substring(0, 28);
+    //console.log("Empresa mãe: " + empresa_mae);
+    this.af.database.object('lote_candler/' + id + '/info_lote').set({
+      id_empresa_filha: this.empresa.getId(),
+      id_lote_mae: empresa_mae_id,
+      id_empresa_mae: empresa_mae,
       nome: formData.value.nomeCandler,
       descricao: formData.value.descricao,
       valor: "99.99",
+      quantidade_troca: "10",
       status: "Disponivel"
-    });*/
+    });
   }
 
   criarCandlers(id_lote, quantidade) {

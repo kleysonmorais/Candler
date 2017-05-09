@@ -19,7 +19,7 @@ progress-bar {
         overflow: hidden;
         padding: 0px;
         border-radius: 20px;
-        background-color:#ffeb3c;;
-        //background-color: map-get($colors, primary);
+        //background-color:#ffeb3c;;
+        background-color: map-get($colors, primary);
     }
 }
