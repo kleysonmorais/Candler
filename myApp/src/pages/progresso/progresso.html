@@ -3,17 +3,23 @@
     <ion-title>
       Progresso
     </ion-title>
-    <ion-buttons end>
+    <!--<ion-buttons end>
       <button ion-button icon-only (click)="leitorQrCode()">
         <ion-icon name="qr-scanner"></ion-icon>
+      </button>
+    </ion-buttons>-->
+    <ion-buttons end>
+      <button ion-button color="primary" (click)="logout()">
+        <ion-icon ios="ios-exit" md="md-exit"></ion-icon>
       </button>
     </ion-buttons>
   </ion-navbar>
 </ion-header>
 
+<div class="splash-bg"></div>
 
 <ion-content padding>
-  <input #qrcode>
+  <!--<input #qrcode>
 
   <button ion-button color="primary" (click)="validarCandler(qrcode.value)">Enviar</button>
   <ion-buttons end>
@@ -23,28 +29,41 @@
   </ion-buttons>
   <br>
   
-  <br>
+  <br>-->
   <ion-card *ngFor="let candler of candlers | async">
-
     <ion-item>
       <ion-avatar item-left>
-        <img src="assets/img/marty-avatar.png">
+        <img src="{{ candler.img }}">
       </ion-avatar>
-      <h2>{{ candler.nome }}</h2>
-      <p>November 5, 1955</p>
+      <h2 style="text-align : center"><b>{{ candler.nome }}</b></h2>
+      <ion-avatar item-right>
+        <img src="{{ candler.img }}">
+      </ion-avatar>
     </ion-item>
 
     <ion-card-content>
-      <p> {{ candler.descricao }}</p>
+      <p style="text-align : center"> {{ candler.descricao }}</p>
     </ion-card-content>
-    <progress-bar progress="{{ (100/candler.quantidade_troca * candler.pontuacao_atual) | number : '1.0-1'}}"></progress-bar>
-    <ion-row>
+    <ion-card-content>
+      <!--<p>Seu progresso atual:</p>-->
+      <progress-bar progress="{{ (100/candler.quantidade_troca * candler.pontuacao_atual) | number : '1.0-1'}}"></progress-bar>
+      <h3 style="text-align : center"><b> {{candler.pontuacao_atual}}/{{candler.quantidade_troca}}</b> </h3>
+    </ion-card-content>
+    <!--<ion-row>
       <ion-col center text-center>
         <ion-note>
-          11h ago
+          Tempo Disponível: 10h
         </ion-note>
       </ion-col>
-    </ion-row>
+    </ion-row>-->
 
   </ion-card>
+
+  <ion-fab right bottom>
+    <button ion-fab color="light"><ion-icon name="arrow-dropleft"></ion-icon></button>
+    <ion-fab-list side="left">
+      <button (click)="leitorQrCode()" ion-fab><ion-icon name="qr-scanner"></ion-icon></button>
+      <button (click)="showInputCod()" ion-fab><ion-icon name="code-working"></ion-icon></button>
+    </ion-fab-list>
+  </ion-fab>
 </ion-content>

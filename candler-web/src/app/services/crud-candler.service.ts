@@ -23,6 +23,7 @@ export class CrudCandlerService {
           this.empresa = this.crud.getEmpresa();
           //console.log("Id Empresa constructor: " + this.empresa.getId());
           this.lote_candler = this.af.database.list("empresa/" + this.empresa.getId() + "/lote_filho");
+          console.log("Emitiu lista meu espaço");
           this.emitirListaMeuEspaco.emit(true);
         }
       }

@@ -1,40 +1,39 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>login</ion-title>
+    <ion-title>Entrar</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-  <h2>Please, Login</h2>
   <form [formGroup]="loginForm" (submit)="loginUser()" novalidate>
     <ion-item>
-      <ion-label stacked>Email</ion-label>
+      <ion-label stacked>E-mail</ion-label>
       <ion-input #email formControlName="email" type="email" (change)="elementChanged(email)"
-        placeholder="Your email address"
+        placeholder="Seu endereço de e-mail"
         [class.invalid]="!loginForm.controls.email.valid && (emailChanged || submitAttempt)"></ion-input>
     </ion-item>
     <ion-item class="error-message" *ngIf="!loginForm.controls.email.valid  && (emailChanged || submitAttempt)">
-      <p>Please enter a valid email.</p>
+      <p>Entre com um e-mail válido</p>
     </ion-item>
     <ion-item>
-      <ion-label stacked>Password</ion-label>
+      <ion-label stacked>Senha</ion-label>
       <ion-input #password formControlName="password" type="password" (change)="elementChanged(password)"
-        placeholder="Your password"
+        placeholder="Sua senha"
         [class.invalid]="!loginForm.controls.password.valid && (passwordChanged || submitAttempt)"></ion-input>
     </ion-item>
     <ion-item class="error-message" *ngIf="!loginForm.controls.password.valid  && (passwordChanged || submitAttempt)">
-      <p>Your password needs more than 6 characters.</p>
+      <p>Sua senha precisa ter mais de 6 caracteres.</p>
     </ion-item>
     <button ion-button block type="submit">
-      Login
+      Entrar
     </button>
   </form>
 
   <button ion-button block clear (click)="register()">
-    No have an account? Register Now
+    Não tem uma conta? Crie uma agora!
   </button>
   <!--<button ion-button block clear (click)="resetPwd()">
     Forgot Password

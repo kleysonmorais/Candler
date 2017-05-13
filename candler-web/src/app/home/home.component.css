@@ -1,5 +1,20 @@
 .jumbotron{
-  background-color:#FFFF8D;
+  background: url('./../../assets/img/fundo.jpg') no-repeat transparent;
+  /*background-color: rgba(84, 192, 235, 0.66);*/
+  /*background-color:#54c0eb;*/
   /*color: #FFF8E1;*/
   /*color: #ffffff;*/
+   background-size: cover;
+    height: 80%;
+    z-index: 1;
+    
 }
+
+.splash-logo {
+    margin: auto;
+    margin-top: 15%;
+    background: url('./../../assets/img/qr_icon.png') repeat transparent;
+    background-size: 100%;
+    width: 128px;
+    height: 128px;
+  }

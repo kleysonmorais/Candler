@@ -1,5 +1,5 @@
 import { Component, NgZone } from '@angular/core';
-import { NavController, NavParams, App } from 'ionic-angular';
+import { NavController, NavParams, App, AlertController } from 'ionic-angular';
 import { BarcodeScanner } from 'ionic-native';
 import firebase from 'firebase';
 import { PagesLoginAuthService } from '../../providers/pages-login-auth-service';
@@ -21,7 +21,7 @@ export class ProgressoPage {
   candlers: FirebaseListObservable<any>;
   
 
-  constructor(public af:AngularFire, public crudCandler: CrudCandler, public appCtrl: App, public navCtrl: NavController, public navParams: NavParams, public authService: PagesLoginAuthService) {
+  constructor(public alertCtrl: AlertController, public af:AngularFire, public crudCandler: CrudCandler, public appCtrl: App, public navCtrl: NavController, public navParams: NavParams, public authService: PagesLoginAuthService) {
     var uid;
     this.af.auth.subscribe(auth => {
       if (auth) {
@@ -75,5 +75,34 @@ export class ProgressoPage {
       })
   }
 
+  showInputCod() {
+    let prompt = this.alertCtrl.create({
+      title: 'Código Candler',
+      message: "Entre com o código do seu Candler",
+      inputs: [
+        {
+          name: 'Candler',
+          placeholder: 'Candler'
+        },
+      ],
+      buttons: [
+        {
+          text: 'Cancelar',
+          handler: data => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Salvar',
+          handler: data => {
+            this.crudCandler.resgatarCandler(data.Candler);
+            //console.log('Saved clicked ' + data.value);
+            //console.log('Saved clicked ' + data.Candler);
+          }
+        }
+      ]
+    });
+    prompt.present();
+  }
   
 }

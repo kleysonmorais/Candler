@@ -11,11 +11,11 @@
 
   <div *ngFor="let candler of candlers | async" style="padding-top:2%">
     <div class="card text-center" >
-      <div class="card-header" style="color:green" *ngIf="( candler.status == 'Disponivel' )">
-        <b>Info_lote: {{ candler.status }}</b>
+      <div class="card-header" style="color:green" *ngIf="( candler.status )">
+        <b>Candler Disponível</b>
       </div>
-      <div class="card-header" style="color:red" *ngIf="( candler.status == 'Indisponível' )">
-        <b>Info_lote: {{ candler.status }}</b>
+      <div class="card-header" style="color:red" *ngIf="( !candler.status )">
+        <b>Candler Indisponível</b>
       </div>
       <div class="card-block">
         <h4 class="card-title">id_lote: {{ candler.$key }}</h4>

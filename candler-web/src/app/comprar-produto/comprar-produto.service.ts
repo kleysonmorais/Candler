@@ -33,7 +33,7 @@ export class ComprarProdutoService {
       nome: formData.value.nomeCandler,
       descricao: formData.value.descricao,
       valor: "99.98",*///
-      status: "Disponivel"//
+      status: true
     });
 
     var empresa_mae = empresa_mae_id.substring(0, 28);
@@ -46,14 +46,14 @@ export class ComprarProdutoService {
       descricao: formData.value.descricao,
       valor: "99.99",
       quantidade_troca: "10",
-      status: "Disponivel"
+      status: true
     });
   }
 
   criarCandlers(id_lote, quantidade) {
     for (var i = 0; i < quantidade; i++) {
       this.af.database.object("lote_candler/" + id_lote + "/candler/" + id_lote + i).set({
-        status: "Disponivel"
+        status: true
       });
     }
   }
